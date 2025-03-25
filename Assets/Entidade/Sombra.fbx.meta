@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 892c81be09f0fcf4dac6352e17cf4fef
+guid: 9ac54bcd29cc043409baa6656fca61eb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama
-    second: {fileID: 2100000, guid: cb0615976bcc90e408a100a92b1b6900, type: 2}
+      name: Materiais
+    second: {fileID: 2100000, guid: bf4c405e9670b60479131a940eb6ddaf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama Claro
-    second: {fileID: 2100000, guid: 7eab79cc899490041a3f47d5c61f4e03, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Parede
-    second: {fileID: 2100000, guid: 13e4bb62bfa07544389001377ff3b52e, type: 2}
+      name: Sombra - Preto
+    second: {fileID: 2100000, guid: 1f5935669f64d764382c733eed772757, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

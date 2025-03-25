@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 892c81be09f0fcf4dac6352e17cf4fef
+guid: 3451e966a34c2424a9ae97307e337ee6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama
-    second: {fileID: 2100000, guid: cb0615976bcc90e408a100a92b1b6900, type: 2}
+      name: "Bon\xE9"
+    second: {fileID: 2100000, guid: 55717d707e85327439f736397d6eb363, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama Claro
-    second: {fileID: 2100000, guid: 7eab79cc899490041a3f47d5c61f4e03, type: 2}
+      name: "Cal\xE7a"
+    second: {fileID: 2100000, guid: 59d7a4846c302064babeb134fc140034, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Parede
-    second: {fileID: 2100000, guid: 13e4bb62bfa07544389001377ff3b52e, type: 2}
+      name: Camisa
+    second: {fileID: 2100000, guid: a1cee1db91dcd2642917e363dca5a7cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pele
+    second: {fileID: 2100000, guid: 1e64e95db28d7304cb3a886cca29cd45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sangue
+    second: {fileID: 2100000, guid: 935e74a09d0d89847a67ea72efbae766, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "T\xE9nis"
+    second: {fileID: 2100000, guid: c3f39335cde66ed499d374506c4c949b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

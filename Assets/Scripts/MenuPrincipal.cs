@@ -9,15 +9,17 @@ public class MenuPrincipal : MonoBehaviour
     [SerializeField] private GameObject MenuInicial;
     [SerializeField] private GameObject Opcoes;
     [SerializeField] private GameObject Creditos;
-    [SerializeField] private AudioSource audioSource; // Referência ao AudioSource
-    [SerializeField] private AudioClip playButtonSound; // Som do botão Play
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip playButtonSound;
     public static bool MenuCreditos = false;
+
+    [SerializeField] private CameraMenu cameraMenu; // Referência ao script CameraMenu
 
     public void Play()
     {
         if (audioSource != null && playButtonSound != null)
         {
-            audioSource.PlayOneShot(playButtonSound); // Toca o som
+            audioSource.PlayOneShot(playButtonSound);
         }
         SceneManager.LoadScene("Interface");
     }
@@ -26,17 +28,14 @@ public class MenuPrincipal : MonoBehaviour
     {
         MenuInicial.SetActive(false);
         Opcoes.SetActive(true);
+        cameraMenu.MoveToOptions(); // Move a câmera para Opções
     }
 
     public void CloseOprions()
     {
         Opcoes.SetActive(false);
         MenuInicial.SetActive(true);
-    }
-
-    public void LeaveGame()
-    {
-        Application.Quit();
+        cameraMenu.ResetCamera(); // Volta a câmera para o menu inicial
     }
 
     public void OpenCreditos()
@@ -44,6 +43,7 @@ public class MenuPrincipal : MonoBehaviour
         MenuInicial.SetActive(false);
         Creditos.SetActive(true);
         MenuCreditos = true;
+        cameraMenu.MoveToCredits(); // Move a câmera para Créditos
     }
 
     public void CloseCreditos()
@@ -51,13 +51,11 @@ public class MenuPrincipal : MonoBehaviour
         Creditos.SetActive(false);
         MenuInicial.SetActive(true);
         MenuCreditos = false;
+        cameraMenu.ResetCamera(); // Volta a câmera para o menu inicial
     }
 
-    private void Update()
+    public void LeaveGame()
     {
-        if (MenuCreditos && Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseCreditos();
-        }
+        Application.Quit();
     }
 }
