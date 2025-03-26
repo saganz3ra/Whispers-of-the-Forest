@@ -22692,7 +22692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2463142494814410148}
   m_Layer: 0
-  m_Name: Caboco menu
+  m_Name: Caboco Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27002,7 +27002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5017208816294117809}
   m_Layer: 0
-  m_Name: mapa
+  m_Name: Mapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
