@@ -3,28 +3,52 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    // Dicionário para armazenar os itens e suas quantidades
     private Dictionary<ItemData, int> itemDictionary = new Dictionary<ItemData, int>();
 
-    // Método para adicionar um item ao inventário
     public void AddItem(ItemData newItem)
     {
+        if (newItem == null)
+        {
+            Debug.LogError("Tentativa de adicionar um item nulo ao inventário!");
+            return;
+        }
+
         if (itemDictionary.ContainsKey(newItem))
         {
-            // Se o item já existe, incrementa a quantidade
             itemDictionary[newItem]++;
         }
         else
         {
-            // Se o item não existe, adiciona ao dicionário com a quantidade inicial de 1
             itemDictionary.Add(newItem, 1);
         }
 
-        // Exibe no console para debug
-        Debug.Log($"Item '{newItem.itemName}' adicionado ao inventário. Quantidade: {itemDictionary[newItem]}");
+        Debug.Log(
+            $"Item '{newItem.itemName}' adicionado ao inventário. Quantidade: {itemDictionary[newItem]}"
+        );
     }
 
-    // Método para exibir o inventário no Console
+    public bool HasItem(ItemData item)
+    {
+        if (item == null)
+        {
+            Debug.LogError("Tentativa de verificar um item nulo no inventário!");
+            return false;
+        }
+
+        return itemDictionary.ContainsKey(item);
+    }
+
+    public int GetItemCount(ItemData item)
+    {
+        if (item == null)
+        {
+            Debug.LogError("Tentativa de verificar a quantidade de um item nulo no inventário!");
+            return 0;
+        }
+
+        return itemDictionary.TryGetValue(item, out int count) ? count : 0;
+    }
+
     public void ShowInventory()
     {
         Debug.Log("Inventário:");
@@ -34,20 +58,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Método para verificar a quantidade de um item específico
-    public int GetItemCount(ItemData item)
-    {
-        if (itemDictionary.ContainsKey(item))
-        {
-            return itemDictionary[item];
-        }
-        return 0; // Retorna 0 se o item não estiver no inventário
-    }
-
-    // Exemplo para mostrar o inventário quando pressionar a tecla 'I'
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) // Pressione 'I' para exibir o inventário no console
+        if (Input.GetKeyDown(KeyCode.I))
         {
             ShowInventory();
         }

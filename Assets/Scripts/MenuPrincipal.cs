@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipal : MonoBehaviour
 {
-    [SerializeField] private string gameNameLevel;
-    [SerializeField] private GameObject MenuInicial;
-    [SerializeField] private GameObject Opcoes;
-    [SerializeField] private GameObject Creditos;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip playButtonSound;
+    [SerializeField]
+    private string gameNameLevel;
+
+    [SerializeField]
+    private GameObject MenuInicial;
+
+    [SerializeField]
+    private GameObject Opcoes;
+
+    [SerializeField]
+    private GameObject Creditos;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip playButtonSound;
     public static bool MenuCreditos = false;
 
-    [SerializeField] private CameraMenu cameraMenu; // Referência ao script CameraMenu
+    [SerializeField]
+    private CameraMenu cameraMenu; // Referência ao script CameraMenu
 
     public void Play()
     {
@@ -21,7 +33,7 @@ public class MenuPrincipal : MonoBehaviour
         {
             audioSource.PlayOneShot(playButtonSound);
         }
-        SceneManager.LoadScene("Interface");
+        SceneManager.LoadScene("Game");
     }
 
     public void Options()

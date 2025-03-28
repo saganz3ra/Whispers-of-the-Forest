@@ -7,23 +7,58 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cimento.001
-    second: {fileID: 2100000, guid: 4dc6e6b282534694699a7f7b8ffdb403, type: 2}
+      name: Arames
+    second: {fileID: 2100000, guid: 780ec9fc92fe16841bb47347d6edfa5c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama
-    second: {fileID: 2100000, guid: b1095101346566443aceca12c333408a, type: 2}
+      name: Casa - Marrom Claro
+    second: {fileID: 2100000, guid: 5a3b301e087ffff4e9bee91b20f533d0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grama Claro
-    second: {fileID: 2100000, guid: ab2188ea8b6631d409609282ed0c97fd, type: 2}
+      name: Casa - Marrom Escuro
+    second: {fileID: 2100000, guid: 35cbeb878ea69224caef7f0cc8baa63d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Parede
-    second: {fileID: 2100000, guid: c7f3de659e5573847a47f88a61838e9a, type: 2}
+      name: Casa - Vidro
+    second: {fileID: 2100000, guid: 4a01a704f6491604c9278ba68c42572b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ch\xE3o - Cascalho"
+    second: {fileID: 2100000, guid: d00289e56fd7c1e4684311997adf1331, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ch\xE3o - Grama Escura"
+    second: {fileID: 2100000, guid: 146cfe168191e264c9ff66a946362532, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muro - Cinza
+    second: {fileID: 2100000, guid: a532ded7a0eeadd42bd424d6dd77ae82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Palanque
+    second: {fileID: 2100000, guid: fbd9a618048407442b77f94d8915121f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\xC1rvore - Marrom"
+    second: {fileID: 2100000, guid: a79a3ef1888d0764b964a0b3d850800d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\xC1rvore - Verde Claro"
+    second: {fileID: 2100000, guid: ed14277b6e5352b49b528f3dcf0adb10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\xC1rvore - Verde Escuro"
+    second: {fileID: 2100000, guid: dba0fc530658eb44aa372b4203dd8f94, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

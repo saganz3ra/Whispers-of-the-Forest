@@ -11,8 +11,7 @@ public class PauseMenu : MonoBehaviour
 
     public Behaviour script;
 
-    
-   
+    public ThirdPersonCamera cameraScript;
 
     void Update()
     {
@@ -21,34 +20,41 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-            } else
+            }
+            else
             {
                 Pause();
             }
         }
     }
 
-    public void Resume ()
+    public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
-        pauseMenuUI.SetActive(false);
-        script.enabled=true;
-        
+
+        if (cameraScript != null)
+        {
+            cameraScript.enabled = true;
+        }
     }
-    void Pause ()
+
+    void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
-        script.enabled=false;
+
+        if (cameraScript != null)
+        {
+            cameraScript.enabled = false;
+        }
     }
 
     public void LoadMenu()
-
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Interface");
