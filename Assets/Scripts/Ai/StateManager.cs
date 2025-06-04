@@ -4,31 +4,17 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-
     public States currentState;
 
     void Update()
     {
-        RunStateMachine();
-
-    }
-
-    private void RunStateMachine()
+        if (currentState != null)
         {
-            States nextState = currentState?.RunCurrentState();
-
-            if(nextState != null)
+            States nextState = currentState.RunCurrentState();
+            if (nextState != currentState)
             {
-  	            SwitchState(nextState);
-             }
+                currentState = nextState;
+            }
         }
-            
-
-    private void SwitchState(States nextState)
-    {
-        currentState = nextState;
-
     }
-
-
 }

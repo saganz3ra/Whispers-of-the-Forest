@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ChaseState : States
 {
+    public Transform player;
+    public float attackRange = 2f;
     public AttackState attackState;
-    public bool isInAttackRange;
+
+    private NavMeshAgent agent;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     public override States RunCurrentState()
     {
-        if (isInAttackRange)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= attackRange)
         {
             return attackState;
         }
-        else
-        {
 
-            return this;
-        }
+        agent.SetDestination(player.position);
+        return this;
     }
 }

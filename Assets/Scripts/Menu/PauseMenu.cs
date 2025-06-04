@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
 
     public ThirdPersonCamera cameraScript;
 
+    public GameObject missionUI;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -39,6 +41,12 @@ public class PauseMenu : MonoBehaviour
         {
             cameraScript.enabled = true;
         }
+
+        // Reativa a UI das missões
+        if (missionUI != null)
+        {
+            missionUI.SetActive(true);
+        }
     }
 
     void Pause()
@@ -52,7 +60,14 @@ public class PauseMenu : MonoBehaviour
         {
             cameraScript.enabled = false;
         }
+
+        // Oculta a UI das missões
+        if (missionUI != null)
+        {
+            missionUI.SetActive(false);
+        }
     }
+
 
     public void LoadMenu()
     {

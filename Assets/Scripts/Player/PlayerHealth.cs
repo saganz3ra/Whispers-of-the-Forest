@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,7 +7,11 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
         Debug.Log("Vida do jogador: " + health);
+
+        // Toca o som de dano
+        AudioManagerInGame.Instance.PlayDamage();
 
         if (health <= 0)
         {

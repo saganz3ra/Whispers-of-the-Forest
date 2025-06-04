@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b60ca9da3138b794bbbae7b93c1369e0
+guid: ae65bd9f9e532bd4cb333ee2cb987528
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 0832e67b73dc7ee44b09a2c7f46e5475, type: 2}
+      name: Door - Handle
+    second: {fileID: 2100000, guid: 19a5e7563b2152e49bf3600734846a1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door - Panel
+    second: {fileID: 2100000, guid: 972c2bd4bb8dfc84d909df9d5b21b407, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
