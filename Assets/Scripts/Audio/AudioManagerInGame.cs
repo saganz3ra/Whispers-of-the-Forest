@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManagerInGame : MonoBehaviour
 {
@@ -27,7 +28,26 @@ public class AudioManagerInGame : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        // Escuta mudanças de cena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Se for a cena de Interface, destrói o AudioManager
+        if (scene.name == "Interface")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Evita memory leak
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void PlayDamage()
@@ -38,7 +58,16 @@ public class AudioManagerInGame : MonoBehaviour
 
     public void PlayQuestComplete()
     {
-        sfxSource.PlayOneShot(questCompleteSound);
+        if (sfxSource == null || questCompleteSound == null)
+        {
+            Debug.LogWarning("sfxSource ou questCompleteSound está nulo!");
+            return;
+        }
+
+        float volumeDesejado = 1.0f; // máximo possível (0 a 1)
+        sfxSource.PlayOneShot(questCompleteSound, volumeDesejado);
+
+        Debug.Log("Som de missão completa tocado com volume: " + volumeDesejado);
     }
 
     public void PlayChaseMusic()
@@ -46,11 +75,12 @@ public class AudioManagerInGame : MonoBehaviour
         if (musicSource != null && chaseMusic != null)
         {
             musicSource.loop = true;
-            musicSource.volume = 0.3f; // Define o volume da música de chase (valor entre 0.0 e 1.0)
+            musicSource.volume = 0.3f;
             musicSource.clip = chaseMusic;
             musicSource.Play();
         }
     }
+
     public void StopChaseMusic()
     {
         if (musicSource != null)
@@ -61,4 +91,3 @@ public class AudioManagerInGame : MonoBehaviour
         }
     }
 }
-

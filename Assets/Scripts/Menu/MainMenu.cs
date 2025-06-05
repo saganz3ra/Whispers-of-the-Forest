@@ -28,6 +28,13 @@ public class MainMenu : MonoBehaviour
 
     public static bool MenuCreditos = false;
 
+    private void Start()
+    {
+        // Garante que o cursor está visível e liberado ao abrir o menu
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void Play()
     {
         if (audioSource != null && playButtonSound != null)

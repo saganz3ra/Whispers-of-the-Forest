@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-
 public class PlayerHealth : MonoBehaviour
 {
     public int health = 100;
@@ -74,12 +73,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
     private void Die()
     {
         Debug.Log("Jogador morreu.");
+
         if (deathScreen != null)
             deathScreen.SetActive(true);
+
+        // Parar som e destruir o AudioManager
+        if (AudioManagerInGame.Instance != null)
+        {
+            AudioManagerInGame.Instance.musicSource.Stop();
+            Destroy(AudioManagerInGame.Instance.gameObject);
+        }
 
         StartCoroutine(LoadMenuAfterDelay());
     }

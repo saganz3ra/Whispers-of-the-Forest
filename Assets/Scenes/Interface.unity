@@ -12911,7 +12911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 800068481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: creditsPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14038,7 +14038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 927508173}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: optionsRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15571,7 +15571,7 @@ GameObject:
   - component: {fileID: 1073357807}
   - component: {fileID: 1073357810}
   - component: {fileID: 1073357811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -16503,7 +16503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1164394026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: creditsRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16617,7 +16617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165319015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16866,7 +16866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1187769777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18247,7 +18247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362560082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: optionsPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
