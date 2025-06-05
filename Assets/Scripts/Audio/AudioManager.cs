@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -33,9 +34,33 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        // Inicia os sons ambientes
+        // Inicia sons do menu
+        Play("MenuMusic");
         Play("Bonfire");
         Play("Wind");
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "InGame")
+        {
+            // Para a música do menu
+            Stop("MenuMusic");
+
+            // Muta os efeitos de Bonfire e Wind
+            Mute("Bonfire");
+            Mute("Wind");
+        }
     }
 
     public void Play(string name)
@@ -94,5 +119,23 @@ public class AudioManager : MonoBehaviour
             volume = Mathf.Clamp01(volume);
 
         s.source.volume = volume;
+    }
+
+    public void Mute(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            s.source.volume = 0f;
+        }
+    }
+
+    public void Unmute(string name, float originalVolume = 1f)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            SetVolume(name, originalVolume);
+        }
     }
 }

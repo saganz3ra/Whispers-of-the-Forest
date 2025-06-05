@@ -8,11 +8,8 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-
     public Behaviour script;
-
     public ThirdPersonCamera cameraScript;
-
     public GameObject missionUI;
 
     void Update()
@@ -36,13 +33,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         if (cameraScript != null)
         {
             cameraScript.enabled = true;
         }
 
-        // Reativa a UI das missões
         if (missionUI != null)
         {
             missionUI.SetActive(true);
@@ -55,19 +52,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         if (cameraScript != null)
         {
             cameraScript.enabled = false;
         }
 
-        // Oculta a UI das missões
         if (missionUI != null)
         {
             missionUI.SetActive(false);
         }
     }
-
 
     public void LoadMenu()
     {
