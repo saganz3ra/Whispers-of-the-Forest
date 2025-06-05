@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,10 +8,12 @@ public class ChaseState : States
     public AttackState attackState;
 
     private NavMeshAgent agent;
+    private Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     public override States RunCurrentState()
@@ -22,10 +22,41 @@ public class ChaseState : States
 
         if (distanceToPlayer <= attackRange)
         {
+            if (animator != null && HasParameter("isWalking"))
+            {
+                animator.SetBool("isWalking", false); // Parar caminhada ao entrar em ataque
+            }
+
             return attackState;
         }
 
-        agent.SetDestination(player.position);
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(player.position);
+
+            if (animator != null && HasParameter("isWalking"))
+            {
+                animator.SetBool("isWalking", true); // Caminhada ativada ao perseguir
+            }
+        }
+        else
+        {
+            Debug.LogWarning("NavMeshAgent não está na NavMesh!");
+        }
+
         return this;
+    }
+
+    private bool HasParameter(string name)
+    {
+        if (animator == null) return false;
+
+        foreach (var param in animator.parameters)
+        {
+            if (param.name == name)
+                return true;
+        }
+
+        return false;
     }
 }

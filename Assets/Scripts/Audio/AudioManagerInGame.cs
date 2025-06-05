@@ -5,6 +5,7 @@ public class AudioManagerInGame : MonoBehaviour
     public static AudioManagerInGame Instance;
 
     public AudioSource sfxSource;
+    public AudioSource musicSource;
 
     [Header("Damage Sounds")]
     public AudioClip hurtSound;
@@ -12,6 +13,9 @@ public class AudioManagerInGame : MonoBehaviour
 
     [Header("Quest")]
     public AudioClip questCompleteSound;
+
+    [Header("Chase Music")]
+    public AudioClip chaseMusic;
 
     private void Awake()
     {
@@ -28,7 +32,6 @@ public class AudioManagerInGame : MonoBehaviour
 
     public void PlayDamage()
     {
-        // Toca aleatoriamente entre hurt e pain
         AudioClip clip = Random.value < 0.5f ? hurtSound : painSound;
         sfxSource.PlayOneShot(clip);
     }
@@ -37,4 +40,25 @@ public class AudioManagerInGame : MonoBehaviour
     {
         sfxSource.PlayOneShot(questCompleteSound);
     }
+
+    public void PlayChaseMusic()
+    {
+        if (musicSource != null && chaseMusic != null)
+        {
+            musicSource.loop = true;
+            musicSource.volume = 0.3f; // Define o volume da música de chase (valor entre 0.0 e 1.0)
+            musicSource.clip = chaseMusic;
+            musicSource.Play();
+        }
+    }
+    public void StopChaseMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.loop = false;
+            musicSource.Stop();
+            musicSource.clip = null;
+        }
+    }
 }
+

@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius = 0.4f;
     public LayerMask ground;
 
+    [HideInInspector] public bool isClimbing = false;
+
     void Update()
     {
         HandleInput();
@@ -29,11 +31,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        HandleMovement();
-        HandleRotation();
-        LimitVelocity();
-        HandleDrag();
-        HandleJump();
+        if (isClimbing)
+        {
+            HandleLadderClimb();
+        }
+        else
+        {
+            HandleMovement();
+            HandleRotation();
+            LimitVelocity();
+            HandleDrag();
+            HandleJump();
+            rb.useGravity = true;
+        }
     }
 
     void HandleInput()
@@ -116,8 +126,13 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGrounded()
     {
+        if (isClimbing)
+        {
+            grounded = false;
+            return;
+        }
+
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, ground);
-        // Visualização opcional no editor
         Debug.DrawRay(groundCheck.position, Vector3.down * groundCheckRadius, grounded ? Color.green : Color.red);
     }
 
@@ -128,7 +143,18 @@ public class PlayerMovement : MonoBehaviour
         float horizontalSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
         animator.SetFloat("Speed", horizontalSpeed);
 
-        // Quando não está no chão, ativa o pulo
         animator.SetBool("isJumping", !grounded);
+        // Animação de escalada removida
+    }
+
+    void HandleLadderClimb()
+    {
+        rb.useGravity = false;
+
+        float verticalInput = 0f;
+        if (Input.GetKey(KeyCode.W)) verticalInput = 1f;
+        else if (Input.GetKey(KeyCode.S)) verticalInput = -1f;
+
+        rb.velocity = new Vector3(0f, verticalInput * 2f, 0f); // Velocidade ajustável
     }
 }

@@ -1,31 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]
-    private string gameNameLevel;
+    [Header("Cena")]
+    [SerializeField] private string gameNameLevel = "Scenes/InGame";
 
-    [SerializeField]
-    private GameObject MenuInicial;
+    [Header("Menus")]
+    [SerializeField] private GameObject MenuInicial;
+    [SerializeField] private GameObject Opcoes;
+    [SerializeField] private GameObject Creditos;
 
-    [SerializeField]
-    private GameObject Opcoes;
+    [Header("Áudio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip playButtonSound;
 
-    [SerializeField]
-    private GameObject Creditos;
+    [Header("Referência da Câmera")]
+    [SerializeField] private CameraMenu cameraMenu;
 
-    [SerializeField]
-    private AudioSource audioSource;
+    [Header("Tela de Introdução")]
+    [SerializeField] private GameObject introPanel;
+    [SerializeField] private CanvasGroup introCanvasGroup;
+    [SerializeField] private float introDuration = 5f;
+    [SerializeField] private float fadeDuration = 1f;
 
-    [SerializeField]
-    private AudioClip playButtonSound;
     public static bool MenuCreditos = false;
-
-    [SerializeField]
-    private CameraMenu cameraMenu; // Referência ao script CameraMenu
 
     public void Play()
     {
@@ -33,21 +34,48 @@ public class MainMenu : MonoBehaviour
         {
             audioSource.PlayOneShot(playButtonSound);
         }
-        SceneManager.LoadScene("Game");
+
+        StartCoroutine(ShowIntroAndStartGame());
+    }
+
+    private IEnumerator ShowIntroAndStartGame()
+    {
+        introPanel.SetActive(true);
+
+        yield return StartCoroutine(FadeCanvasGroup(introCanvasGroup, 0, 1, fadeDuration));
+        yield return new WaitForSeconds(introDuration);
+        yield return StartCoroutine(FadeCanvasGroup(introCanvasGroup, 1, 0, fadeDuration));
+
+        SceneManager.LoadScene("Scenes/InGame");
+    }
+
+    private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float startAlpha, float endAlpha, float duration)
+    {
+        float time = 0f;
+        canvasGroup.alpha = startAlpha;
+
+        while (time < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        canvasGroup.alpha = endAlpha;
     }
 
     public void Options()
     {
         MenuInicial.SetActive(false);
         Opcoes.SetActive(true);
-        cameraMenu.MoveToOptions(); // Move a câmera para Opções
+        cameraMenu.MoveToOptions();
     }
 
     public void CloseOprions()
     {
         Opcoes.SetActive(false);
         MenuInicial.SetActive(true);
-        cameraMenu.ResetCamera(); // Volta a câmera para o menu inicial
+        cameraMenu.ResetCamera();
     }
 
     public void OpenCreditos()
@@ -55,7 +83,7 @@ public class MainMenu : MonoBehaviour
         MenuInicial.SetActive(false);
         Creditos.SetActive(true);
         MenuCreditos = true;
-        cameraMenu.MoveToCredits(); // Move a câmera para Créditos
+        cameraMenu.MoveToCredits();
     }
 
     public void CloseCreditos()
@@ -63,11 +91,11 @@ public class MainMenu : MonoBehaviour
         Creditos.SetActive(false);
         MenuInicial.SetActive(true);
         MenuCreditos = false;
-        cameraMenu.ResetCamera(); // Volta a câmera para o menu inicial
+        cameraMenu.ResetCamera();
     }
 
     public void LeaveGame()
     {
         Application.Quit();
     }
-}
+}
