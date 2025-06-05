@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Quest
   m_EditorClassIdentifier: 
   questName: Found the crowbar
-  description: There's something interesting behind that door. It looks like a crowbar
-    would help. It could break it down.
-  isCompleted: 1
+  description: A crowbar would be useful
+  isCompleted: 0
   goal:
     goalType: 0
     targetObjectTag: Crowbar
